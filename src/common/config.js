@@ -1,2 +1,2 @@
-export const API_URL = "https://conduit.productionready.io/api";
+export const API_URL = process.env.LOCAL_API;
 export default API_URL;
