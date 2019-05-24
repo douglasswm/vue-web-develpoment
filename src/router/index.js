@@ -4,6 +4,7 @@ import Router from "vue-router";
 Vue.use(Router);
 
 export default new Router({
+  linkActiveClass: "is-active",
   routes: [
     {
       path: "/",
@@ -40,6 +41,16 @@ export default new Router({
       name: "settings",
       path: "/settings",
       component: () => import("@/views/Settings")
+    },
+    {
+      name: "chat",
+      path: "/chat",
+      component: () => import("@/views/Chat")
+    },
+    {
+      name: "tasks",
+      path: "/tasks",
+      component: () => import("@/views/Tasks")
     },
     // Handle child routes with a default, by giving the name to the
     // child.

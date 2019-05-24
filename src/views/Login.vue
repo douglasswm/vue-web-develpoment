@@ -1,41 +1,35 @@
 <template>
-  <div class="auth-page">
-    <div class="container page">
-      <div class="row">
-        <div class="col-md-6 offset-md-3 col-xs-12">
-          <h1 class="text-xs-center">Sign in</h1>
-          <p class="text-xs-center">
-            <router-link :to="{ name: 'register' }">
-              Need an account?
-            </router-link>
-          </p>
-          <ul v-if="errors" class="error-messages">
-            <li v-for="(v, k) in errors" :key="k">{{ k }} {{ v | error }}</li>
-          </ul>
-          <form v-on:submit.prevent="onSubmit(email, password);">
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="text"
-                v-model="email"
-                placeholder="Email"
-              />
-            </fieldset>
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="password"
-                v-model="password"
-                placeholder="Password"
-              />
-            </fieldset>
-            <button class="btn btn-lg btn-primary pull-xs-right">
-              Sign in
-            </button>
-          </form>
+  <div class="container column is-half is-centered">
+    <p class="is-size-3 has-text-centered has-text-weight-semibold">Log In</p>
+    <ul v-if="errors" class="error-messages">
+      <li v-for="(v, k) in errors" :key="k">{{ k }} {{ v | error }}</li>
+    </ul>
+
+    <form v-on:submit.prevent="onSubmit(email, password);">
+      <div class="field">
+        <label class="label">Email</label>
+        <div class="control has-icons-left">
+          <input class="input" type="email" v-model="email" />
+          <span class="icon is-small is-left">
+            <i class="far fa-envelope"></i>
+          </span>
         </div>
       </div>
-    </div>
+
+      <div class="field">
+        <label class="label">Password</label>
+        <div class="control has-icons-left">
+          <input class="input" type="password" v-model="password" />
+          <span class="icon is-small is-left">
+            <i class="fas fa-key"></i>
+          </span>
+        </div>
+      </div>
+
+      <div class="field">
+        <p class="control"><button class="button is-success">Log In</button></p>
+      </div>
+    </form>
   </div>
 </template>
 

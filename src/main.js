@@ -1,8 +1,10 @@
+require("dotenv").config();
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
+import VueChatScroll from "vue-chat-scroll";
 
 import { CHECK_AUTH } from "./store/actions.type";
 import ApiService from "./common/api.service";
@@ -12,6 +14,7 @@ import ErrorFilter from "./common/error.filter";
 Vue.config.productionTip = false;
 Vue.filter("date", DateFilter);
 Vue.filter("error", ErrorFilter);
+Vue.use(VueChatScroll);
 
 ApiService.init();
 

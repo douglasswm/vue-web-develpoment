@@ -1,96 +1,125 @@
 <template>
-  <nav class="navbar navbar-light">
-    <div class="container">
-      <router-link class="navbar-brand" :to="{ name: 'home' }">
-        conduit
-      </router-link>
-      <ul v-if="!isAuthenticated" class="nav navbar-nav pull-xs-right">
-        <li class="nav-item">
-          <router-link
-            class="nav-link"
-            active-class="active"
-            exact
-            :to="{ name: 'home' }"
-          >
-            Home
+  <nav class="navbar is-transparent is-spaced" role="navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item"> <RabbitLogo class="logo" /> </a>
+    </div>
+
+    <div v-if="!isAuthenticated" class="navbar-menu">
+      <div class="navbar-start">
+        <router-link class="navbar-item" exact :to="{ name: 'home' }">
+          <span class="icon"> <i class="fas fa-home"></i> </span>
+          <span> Home </span>
+        </router-link>
+      </div>
+
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="buttons">
+            <router-link
+              class="button is-link"
+              exact
+              :to="{ name: 'register' }"
+            >
+              Sign Up
+            </router-link>
+            <router-link class="button is-light" exact :to="{ name: 'login' }">
+              Log In
+            </router-link>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-else class="navbar-menu">
+      <div class="navbar-end">
+        <div>
+          <router-link class="navbar-item" exact :to="{ name: 'home' }">
+            <span class="icon"> <i class="fas fa-home"></i> </span>
+            <span> Home </span>
           </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link
-            class="nav-link"
-            active-class="active"
-            exact
-            :to="{ name: 'login' }"
-          >
-            <i class="ion-compose"></i>Sign in
+        </div>
+        <div>
+          <router-link class="navbar-item" exact :to="{ name: 'chat' }">
+            <span class="icon"> <i class="far fa-comments"></i> </span>
+            <span> Chat </span>
           </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link
-            class="nav-link"
-            active-class="active"
-            exact
-            :to="{ name: 'register' }"
-          >
-            <i class="ion-compose"></i>Sign up
+        </div>
+        <div>
+          <router-link class="navbar-item" exact :to="{ name: 'tasks' }">
+            <span class="icon"> <i class="fas fa-tasks"></i> </span>
+            <span> Tasks </span>
           </router-link>
-        </li>
-      </ul>
-      <ul v-else class="nav navbar-nav pull-xs-right">
-        <li class="nav-item">
+        </div>
+
+        <div class="navbar-item has-dropdown is-hoverable">
           <router-link
-            class="nav-link"
-            active-class="active"
-            exact
-            :to="{ name: 'home' }"
-          >
-            Home
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link
-            class="nav-link"
-            active-class="active"
-            :to="{ name: 'article-edit' }"
-          >
-            <i class="ion-compose"></i>&nbsp;New Article
-          </router-link>
-        </li>
-        <li class="nav-item">
-          <router-link
-            class="nav-link"
-            active-class="active"
-            exact
-            :to="{ name: 'settings' }"
-          >
-            <i class="ion-gear-a"></i>&nbsp;Settings
-          </router-link>
-        </li>
-        <li class="nav-item" v-if="currentUser.username">
-          <router-link
-            class="nav-link"
-            active-class="active"
+            class="navbar-link"
+            v-if="currentUser.username"
             exact
             :to="{
               name: 'profile',
               params: { username: currentUser.username }
             }"
           >
-            {{ currentUser.username }}
+            <span> {{ currentUser.username }} </span>
           </router-link>
-        </li>
-      </ul>
+          <div class="navbar-dropdown is-boxed">
+            <router-link
+              class="navbar-item"
+              exact
+              :to="{
+                name: 'profile',
+                params: { username: currentUser.username }
+              }"
+            >
+              <span class="icon"> <i class="fas fa-user-circle"></i> </span>
+              <span> Profile </span>
+            </router-link>
+            <router-link class="navbar-item" exact :to="{ name: 'settings' }">
+              <span class="icon"> <i class="fas fa-cog"></i> </span>
+              <span> Settings </span>
+            </router-link>
+            <a @click="logout" class="navbar-item">
+              <span class="icon has-text-danger">
+                <i class="fas fa-sign-out-alt"></i>
+              </span>
+              <span class="has-text-danger"> Log Out </span>
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
   </nav>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import { LOGOUT } from "@/store/actions.type";
+import RabbitLogo from "../assets/img/bunny.svg";
 
 export default {
   name: "RwvHeader",
+  components: {
+    RabbitLogo
+  },
   computed: {
     ...mapGetters(["currentUser", "isAuthenticated"])
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch(LOGOUT).then(() => {
+        this.$router.push({ name: "home" });
+      });
+    }
   }
 };
 </script>
+
+<style scoped>
+.logo {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  margin-right: 15px;
+}
+</style>
