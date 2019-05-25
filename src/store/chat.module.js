@@ -7,7 +7,7 @@ const state = {
   friends: []
 };
 const actions = {
-  async [CHATKIT_LOGIN]({ context }, userId) {
+  async [CHATKIT_LOGIN]({ commit }, userId) {
     // Connect user to ChatKit service
     const currentUser = await chatkit.connectUser(userId);
     // Save list of user's rooms in store
@@ -16,7 +16,7 @@ const actions = {
       name: room.name,
       avatarURL: room.avatarURL
     }));
-    context.commit(SET_ROOMS, chatkit_rooms);
+    commit(SET_ROOMS, chatkit_rooms);
   }
 };
 const mutations = {

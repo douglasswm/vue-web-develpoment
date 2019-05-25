@@ -1,10 +1,8 @@
 <template>
-  <p>message</p></template
->
+  <p>message</p>
+</template>
 <script>
-// export default {
-//   name: "message-form"
-// };
-
-//
+export default {
+  name: "message-form"
+};
 </script>
