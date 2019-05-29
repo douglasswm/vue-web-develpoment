@@ -21,3 +21,5 @@ export const LOGOUT = "logout";
 export const REGISTER = "register";
 export const UPDATE_USER = "updateUser";
 export const CHATKIT_LOGIN = "chatKitLogin";
+export const CHANGE_ROOM = "changeRoom";
+export const SEND_MESSAGE = "sendMessage";

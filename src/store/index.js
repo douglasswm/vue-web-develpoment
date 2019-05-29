@@ -1,6 +1,6 @@
 import Vue from "vue";
 import Vuex from "vuex";
-
+import VuexPersistence from "vuex-persist";
 import home from "./home.module";
 import auth from "./auth.module";
 import article from "./article.module";
@@ -9,6 +9,10 @@ import chat from "./chat.module";
 
 Vue.use(Vuex);
 
+const vuexLocal = new VuexPersistence({
+  storage: window.localStorage
+});
+
 export default new Vuex.Store({
   modules: {
     home,
@@ -16,5 +20,6 @@ export default new Vuex.Store({
     article,
     profile,
     chat
-  }
+  },
+  plugins: [vuexLocal.plugin]
 });

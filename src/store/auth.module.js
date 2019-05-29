@@ -1,11 +1,13 @@
 import ApiService from "@/common/api.service";
 import JwtService from "@/common/jwt.service";
+import chatkit from "../chatkit";
 import {
   LOGIN,
   LOGOUT,
   REGISTER,
   CHECK_AUTH,
-  UPDATE_USER
+  UPDATE_USER,
+  CHATKIT_LOGIN
 } from "./actions.type";
 import { SET_AUTH, PURGE_AUTH, SET_ERROR } from "./mutations.type";
 
@@ -25,20 +27,24 @@ const getters = {
 };
 
 const actions = {
-  [LOGIN](context, credentials) {
+  [LOGIN]({ commit, dispatch }, credentials) {
     return new Promise(resolve => {
       ApiService.post("users/login", { user: credentials })
         .then(({ data }) => {
-          context.commit(SET_AUTH, data.user);
+          commit(SET_AUTH, data.user);
           resolve(data);
+          dispatch(CHATKIT_LOGIN, data.user.userId);
         })
         .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
+          commit(SET_ERROR, response.data.errors);
         });
     });
   },
   [LOGOUT](context) {
+    // context.commit(PURGE_CHAT);
     context.commit(PURGE_AUTH);
+    chatkit.disconnectUser();
+    // window.localStorage.clear();
   },
   [REGISTER](context, credentials) {
     return new Promise((resolve, reject) => {

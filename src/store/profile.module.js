@@ -57,9 +57,9 @@ const actions = {
 };
 
 const mutations = {
-  // [SET_ERROR] (state, error) {
-  //   state.errors = error
-  // },
+  //  [SET_ERROR] (state, error) {
+  //    state.errors = error
+  //  },
   [SET_PROFILE](state, profile) {
     state.profile = profile;
     state.errors = {};

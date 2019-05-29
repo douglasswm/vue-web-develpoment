@@ -13,7 +13,8 @@
     "vue-chat-scroll": "^1.3.5",
     "vue-router": "^3.0.1",
     "vue-svg-loader": "^0.12.0",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-persist": "^2.0.1"
   },
   "description": "TodoMVC for the RealWorld™",
   "devDependencies": {

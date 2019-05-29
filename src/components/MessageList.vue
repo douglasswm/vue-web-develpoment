@@ -1,6 +1,5 @@
 <template>
   <div class="message-list">
-    <h4>Messages</h4>
     <hr />
     <div
       id="chat-messages"
@@ -10,17 +9,14 @@
       <div class="message" v-for="(message, index) in messages" :key="index">
         <div class="clearfix">
           <h4 class="message-title">{{ message.name }}</h4>
-          <small class="text-muted float-right">@{{ message.username }}</small>
+          <small class="text-muted float-right">@{{ message.date }}</small>
         </div>
         <p class="message-text">{{ message.text }}</p>
-        <div class="clearfix">
-          <small class="text-muted float-right">{{ message.date }}</small>
-        </div>
       </div>
     </div>
-    <small class="text-muted" v-if="userTyping"
-      >@{{ userTyping }} is typing....</small
-    >
+    <small class="text-muted" v-if="userTyping">
+      @{{ userTyping }} is typing....
+    </small>
   </div>
 </template>
 
@@ -29,9 +25,10 @@ import { mapState } from "vuex";
 
 export default {
   name: "message-list",
-  computed: {
-    ...mapState(["messages", "userTyping"])
-  }
+  computed: mapState({
+    messages: state => state.chat.messages,
+    userTyping: state => state.chat.userTyping
+  })
 };
 </script>
 
