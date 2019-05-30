@@ -15,15 +15,15 @@
       <div class="navbar-end">
         <div class="navbar-item">
           <div class="buttons">
+            <router-link class="button is-light" exact :to="{ name: 'login' }">
+              Log In
+            </router-link>
             <router-link
               class="button is-link"
               exact
               :to="{ name: 'register' }"
             >
-              Sign Up
-            </router-link>
-            <router-link class="button is-light" exact :to="{ name: 'login' }">
-              Log In
+              <h6 class="title is-6 reg">GET STARTED</h6>
             </router-link>
           </div>
         </div>
@@ -116,6 +116,9 @@ export default {
 </script>
 
 <style scoped>
+.reg {
+  color: #ffffff;
+}
 .logo {
   width: 40px;
   height: 40px;

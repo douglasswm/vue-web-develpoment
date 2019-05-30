@@ -27,8 +27,3 @@ export default {
   }
 };
 </script>
-<style>
-/* .menu-label-spacing{
-        size: 10em
-    } */
-</style>

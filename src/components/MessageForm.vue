@@ -36,7 +36,7 @@ export default {
     async onSubmit() {
       const result = await this.$store
         .dispatch(SEND_MESSAGE, this.message)
-        .then(result => console.log(result));
+        .then(result => console.log("MSG SUBMITTED" + result));
       if (result) {
         this.message = "";
       }

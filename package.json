@@ -1,10 +1,14 @@
 {
   "author": "Emmanuel Vilsbol <emmanuel@vilsbol.com>",
   "dependencies": {
+    "@babel/core": "^7.4.5",
     "@pusher/chatkit-client": "^1.5.0",
     "axios": "^0.18.0",
+    "babel-eslint": "^10.0.1",
     "date-fns": "^1.29.0",
     "dotenv": "^8.0.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.2.2",
     "marked": "^0.5.1",
     "moment": "^2.24.0",
     "register-service-worker": "^1.0.0",
@@ -14,7 +18,8 @@
     "vue-router": "^3.0.1",
     "vue-svg-loader": "^0.12.0",
     "vuex": "^3.0.1",
-    "vuex-persist": "^2.0.1"
+    "vuex-persist": "^2.0.1",
+    "webpack": "^4.32.2"
   },
   "description": "TodoMVC for the RealWorld™",
   "devDependencies": {
