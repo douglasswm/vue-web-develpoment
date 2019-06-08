@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="columns">
-      <div class="column is-one-fifth"><ChatNavBar /></div>
+      <div class="column is-2"><ChatNavBar /></div>
       <div class="column">
         <MessageList />
         <MessageForm />

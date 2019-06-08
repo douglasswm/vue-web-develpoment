@@ -5,7 +5,7 @@
       <li v-for="(v, k) in errors" :key="k">{{ k }} {{ v | error }}</li>
     </ul>
 
-    <form v-on:submit.prevent="onSubmit(email, password);">
+    <form v-on:submit.prevent="onSubmit(email, password)">
       <div class="field">
         <label class="label">Email</label>
         <div class="control has-icons-left">

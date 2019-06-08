@@ -84,7 +84,7 @@ export default {
           username: this.username,
           teamName: this.teamName
         })
-        .then(() => this.$router.push({ name: "home" }));
+        .then(() => this.$router.push({ name: "login" }));
     }
   }
 };

@@ -7,16 +7,14 @@
       v-chat-scroll="{ smooth: true }"
     >
       <div class="message" v-for="(message, index) in messages" :key="index">
-        <div class="clearfix">
+        <div>
           <h4 class="message-title">{{ message.name }}</h4>
-          <small class="text-muted float-right">@{{ message.date }}</small>
+          <small>@{{ message.date }}</small>
         </div>
         <p class="message-text">{{ message.text }}</p>
       </div>
     </div>
-    <small class="text-muted" v-if="userTyping">
-      @{{ userTyping }} is typing....
-    </small>
+    <p v-if="userTyping">@{{ userTyping }} is typing....</p>
   </div>
 </template>
 
